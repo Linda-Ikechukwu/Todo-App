@@ -2,7 +2,7 @@
 var input = document.querySelector("input[type = 'text']");
 var container = document.querySelector("div");
 var ul = document.querySelector("ul");
-var lists = document.getElementsByTagName("li");
+var lists = document.querySelectorAll("li");
 var spans = document.getElementsByTagName("span");
 var pencil = document.querySelector("#pencil");
 var saveBtn = document.querySelector(".save");
@@ -26,6 +26,7 @@ function deleteTodo(){
 function loadTodo(){
   if(localStorage.getItem('todoList')){
     ul.innerHTML = localStorage.getItem('todoList');
+    deleteTodo();
   }
 }
 
@@ -63,18 +64,19 @@ pencil.addEventListener('click', function(){
   input.classList.toggle('display');
 });
 
-container.addEventListener("click", function(){
-  input.setAttribute("placeholder", "Add New Todo");
-})
+
 
 //save todolist state so user can access it later
 saveBtn.addEventListener('click',function(){
   localStorage.setItem('todoList',ul.innerHTML );
+  
 });
 
 //clear all todo when clear button is clicked
 clearBtn.addEventListener('click', function(){
-    ul.innerHTML = " ";
+  for(var i=0; li=lists[i]; i++) {
+    li.parentNode.removeChild(li);
+} 
 });
 
 //display overlay when tips btn is clicked
