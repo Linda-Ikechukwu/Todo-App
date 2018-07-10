@@ -1,7 +1,7 @@
 //selecting dom elements for manipulation
 var input = document.querySelector("input[type = 'text']");
-var container = document.querySelector("div");
 var ul = document.querySelector("ul");
+var container = document.querySelector("div");
 var lists = document.querySelectorAll("li");
 var spans = document.getElementsByTagName("span");
 var pencil = document.querySelector("#pencil");
@@ -74,9 +74,8 @@ saveBtn.addEventListener('click',function(){
 
 //clear all todo when clear button is clicked
 clearBtn.addEventListener('click', function(){
-  for(var i=0; li=lists[i]; i++) {
-    li.parentNode.removeChild(li);
-} 
+  ul.innerHTML= "";
+  localStorage.removeItem('todoList',ul.innerHTML );
 });
 
 //display overlay when tips btn is clicked
